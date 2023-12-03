@@ -2,6 +2,8 @@ import sqlalchemy
 from sqlalchemy import create_engine, text
 import os
 
+from sqlalchemy.sql.operators import is_distinct_from
+
 db_connection_string = os.environ['DB_CONNECTION_STRING']
 
 engine = create_engine(
@@ -26,11 +28,12 @@ def load_job_from_db(id):
   with engine.connect() as conn:
     result = conn.execute(text("select * from jobs where id = :val"),
     {'val': id})
-    jobs = []
+    job = []
     rows = result.all()
+    print(rows)
     for row in rows:
-      jobs.append(dict(row._mapping))
-    if len(rows) == 0:
-      return "Job not found"
+      job.append(dict(row._mapping))
+    if len(job) == 0:
+      return None
     else:
-      return jobs[0]
+      return job[0]
