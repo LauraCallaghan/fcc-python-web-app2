@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def hello_jovian():
   jobslist = load_jobs_from_db()
-  return render_template('home.html', jobs=jobslist, company_name='Jovian')
+  return render_template('home.html', jobs=jobslist)
 
 
 @app.route("/api/jobslist")
