@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify, request
+from werkzeug import datastructures
 from database import engine, load_jobs_from_db, load_job_from_db
 
 app = Flask(__name__)
@@ -33,7 +34,7 @@ def apply_to_job(id):
   #store this in db
   #display an acknowlegdment
   #send an email
-  return jsonify(data)
+  return render_template('applicationsubmitted.html', application=data)
 
 
 if __name__ == '__main__':

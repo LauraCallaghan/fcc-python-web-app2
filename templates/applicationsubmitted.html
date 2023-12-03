@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Application Submitted</title>
+    {% include 'bootstrap.html' %}
+
+  </head>
+  <body>
+    <h4>Full Name</h4>
+    <div>{{application['fullname']}}</div>
+
+    <h4>Email</h4>
+    <div>{{application['email']}}</div>
+    {% include 'footer.html' %}
+  </body>
+</html>
