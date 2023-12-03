@@ -13,9 +13,10 @@ engine = create_engine(
 def load_jobs_from_db():
   with engine.connect() as conn:
     result = conn.execute(text("select * from jobs"))
-    result_dicts = []
+    jobs = []
     for row in result.all():
-      result_dicts.append(row._mapping)
-    return result_dicts
+      jobs.append(row._mapping)
+      #jobs.append(dict(row))
+    return jobs
   
 
