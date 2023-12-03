@@ -1,7 +1,8 @@
 import sqlalchemy
 from sqlalchemy import create_engine, text
+import os
 
-db_connection_string = "mysql+pymysql://pb2ggzp18d15r6beopu4:pscale_pw_6T7rI3DH5b03qXJH0Qvm5H5KJGg1gvVLOSFf2yJx1gS@aws.connect.psdb.cloud/joviancareers?charset=utf8mb4"
+db_connection_string = os.environ['DB_CONNECTION_STRING']
 
 engine = create_engine(
     db_connection_string,
@@ -15,6 +16,6 @@ def load_jobs_from_db():
     result_dicts = []
     for row in result.all():
       result_dicts.append(row._mapping)
-    print(result_dicts)
+    return result_dicts
   
 
