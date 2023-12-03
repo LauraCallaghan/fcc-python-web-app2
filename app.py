@@ -22,16 +22,17 @@ def list_jobs():
 def show_job(id):
   job = load_job_from_db(id)
   #return jsonify(job)
-  
+
   if not job:
     return "Job not found", 404
-  
+
   return render_template('jobpage.html', job=job)
+
 
 @app.route("/job/<id>/apply", methods=['post'])
 def apply_to_job(id):
   data = request.form
-  job = load_job_from_db(id)
+  #job = load_job_from_db(id)
   #store this in db
   #display an acknowlegdment
   #send an email
